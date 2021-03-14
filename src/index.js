@@ -8,27 +8,30 @@ function addResult(n) {
 
 function filterNum(n) {
   if (n % 3 === 0) {
-    throw new Error('multiple of three!')
+    throw new Error(`multiple of three! ${n}`)
   }
   return n
 }
 
 const incCount$ = new Subject()
 
-incCount$.pipe(
-  switchMap(n => {
-    return of(n).pipe(
-      map(filterNum),
-      catchError(err => {
-        console.log('ERR', err)
-        return of('HANDLED')
-      })
-    )
-  })
-).subscribe(
-  addResult,
-  err => console.log('GOT ERR', err),
-  () => console.log('COMPLETE'))
+incCount$
+  .pipe(
+    switchMap((n) => {
+      return of(n).pipe(
+        map(filterNum),
+        catchError((err) => {
+          console.log('ERR', err)
+          return of('HANDLED')
+        })
+      )
+    })
+  )
+  .subscribe(
+    addResult,
+    (err) => console.log('GOT ERR', err),
+    () => console.log('COMPLETE')
+  )
 
 $(() => {
   let count = 0

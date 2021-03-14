@@ -8,7 +8,8 @@
     "serve": "webpack serve --mode development",
     "build": "webpack",
     "watch": "webpack --mode development -w",
-    "eslint": "eslint . --ext .js"
+    "eslint": "eslint . --ext .js",
+    "prettier": "prettier -w src/index.js package.json webpack.config.js .babelrc .eslintrc.js .prettierrc.json src/index.html"
   },
   "dependencies": {
     "jquery": "^3.6.0",
