@@ -1,5 +1,5 @@
-import { Subject, of } from "rxjs"
-import { flatMap, switchMap, map, tap, catchError } from "rxjs/operators"
+import { Subject, of } from 'rxjs'
+import { flatMap, switchMap, map, catchError } from 'rxjs/operators'
 import $ from 'jquery'
 
 function addResult(n) {
@@ -7,7 +7,7 @@ function addResult(n) {
 }
 
 function filterNum(n) {
-  if (n % 3 == 0) {
+  if (n % 3 === 0) {
     throw new Error('multiple of three!')
   }
   return n
@@ -24,18 +24,16 @@ incCount$.pipe(
         return of('HANDLED')
       })
     )
-  }),
+  })
 ).subscribe(
   addResult,
   err => console.log('GOT ERR', err),
   () => console.log('COMPLETE'))
 
 $(() => {
-
   let count = 0
 
   $('#doItBtn').click(() => {
     incCount$.next(++count)
   })
-
 })
