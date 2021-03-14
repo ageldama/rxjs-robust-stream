@@ -4,6 +4,11 @@
   "main": "index.js",
   "author": "jonghyouk yun <ageldama@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "serve": "webpack serve --mode development",
+    "build": "webpack",
+    "watch": "webpack --mode development -w"
+  },
   "dependencies": {
     "jquery": "^3.6.0",
     "rxjs": "^6.6.6"
@@ -11,6 +16,7 @@
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2",
     "html-webpack-plugin": "^5.3.1",
     "webpack": "^5.25.0",
