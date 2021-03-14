@@ -1,4 +1,4 @@
-import { Subject, of, onErrorResumeNext } from "rxjs"
+import { Subject, of } from "rxjs"
 import { flatMap, switchMap, map, tap, catchError } from "rxjs/operators"
 import $ from 'jquery'
 
@@ -14,7 +14,7 @@ function filterNum(n) {
 }
 
 const incCount$ = new Subject()
-onErrorResumeNext(
+
 incCount$.pipe(
   switchMap(n => {
     return of(n).pipe(
@@ -25,14 +25,10 @@ incCount$.pipe(
       })
     )
   }),
-)).subscribe(
+).subscribe(
   addResult,
-  err => {
-    console.log('GOT ERR', err)
-  },
-  () => {
-    console.log('COMPLETE')
-  })
+  err => console.log('GOT ERR', err),
+  () => console.log('COMPLETE'))
 
 $(() => {
 
